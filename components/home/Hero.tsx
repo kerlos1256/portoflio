@@ -1,8 +1,10 @@
 import React, { FC } from "react";
-import { styled } from "@mui/material/styles";
 import { Button } from "@mui/material";
+import { useSetRecoilState } from "recoil";
+import { routeState } from "../../state/recoil/route";
 
 const Hero: FC = () => {
+  const setRoute = useSetRecoilState(routeState);
   return (
     <section id="home" className="">
       <div className="ml-16 my-40 flex flex-col gap-8">
@@ -20,12 +22,14 @@ const Hero: FC = () => {
         <div className="flex gap-4 ml-16">
           {/* buttons */}
           <Button
+            onClick={() => setRoute("/#work")}
             variant="contained"
             className="bg-DarkCyan hover:bg-opacity-90 hover:bg-DarkCyan border-black text-black"
           >
             Work
           </Button>
           <Button
+            onClick={() => setRoute("/#contact")}
             className="hover:border-DarkCyan border-DarkCyan text-DarkCyan"
             variant="outlined"
           >

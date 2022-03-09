@@ -8,6 +8,8 @@ import Contact from "../components/home/Contact";
 import Hero from "../components/home/Hero";
 import Skills from "../components/home/Skills";
 import Work, { ProjectType } from "../components/home/Work";
+import connectDB from "../lib/MongoDB";
+import projectModel from "../modals/project.model";
 import { ProjectsState } from "../state/recoil/projects";
 
 const Home: NextPage<{ projects: ProjectType[] }> = ({ projects }) => {
@@ -32,9 +34,12 @@ const Home: NextPage<{ projects: ProjectType[] }> = ({ projects }) => {
 
 export default Home;
 
-export const getServerSideProps = async () => {
-  const { data } = await axios("http://localhost:3000/api/projects");
+export const getStaticProps = async () => {
+  const projects = await connectDB(async () => {
+    return await projectModel.find({ visiable: true }).limit(6);
+  })();
+
   return {
-    props: { projects: data },
+    props: { projects: JSON.parse(JSON.stringify(projects)) },
   };
 };

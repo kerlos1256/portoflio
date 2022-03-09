@@ -22,9 +22,9 @@ const Skills: FC = () => {
       <div className="flex flex-col gap-12">
         {/* skills breakdown */}
         <div className="flex gap-6 items-center justify-center">
-          <div className="translate-y-full bg-gradient-to-l from-white h-1 w-full"></div>
+          <div className="translate-y-full bg-gradient-to-l from-white h-[0.0625rem] w-full"></div>
           <div className="text-[2rem]">Frontend</div>
-          <div className="translate-y-full bg-gradient-to-r from-white h-1 w-full"></div>
+          <div className="translate-y-full bg-gradient-to-r from-white h-[0.0625rem] w-full"></div>
         </div>
         <div className="flex flex-wrap gap-12 justify-center">
           {/* frontend stack */}
@@ -74,9 +74,9 @@ const Skills: FC = () => {
           ))}
         </div>
         <div className="flex gap-6 items-center justify-center">
-          <div className="translate-y-full bg-gradient-to-l from-white h-1 w-full"></div>
+          <div className="translate-y-full bg-gradient-to-l from-white h-[0.0625rem] w-full"></div>
           <div className="text-[2rem]">Backend</div>
-          <div className="translate-y-full bg-gradient-to-r from-white h-1 w-full"></div>
+          <div className="translate-y-full bg-gradient-to-r from-white h-[0.0625rem] w-full"></div>
         </div>
         <div className="flex flex-wrap gap-12 justify-center">
           {/* backend stack */}

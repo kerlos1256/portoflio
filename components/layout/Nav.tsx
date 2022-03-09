@@ -1,6 +1,9 @@
 import { Tooltip, useMediaQuery } from "@mui/material";
 import Link from "next/link";
-import React, { Dispatch, FC, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import React, { FC, useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { routeState } from "../../state/recoil/route";
 
 interface NavLink {
   name: string;
@@ -27,22 +30,35 @@ const navlinks: NavLink[] = [
 ];
 
 const Nav: FC = () => {
-  const [Route, setRoute] = useState("Home");
+  const router = useRouter();
+  const [route, setRoute] = useRecoilState(routeState);
   const [hoveredLink, setHoveredLink] = useState<String>("");
   const [ready, setReady] = useState<boolean>(false);
   const [navOpen, setNavOpen] = useState<boolean>(false);
+  const [initial, setinitial] = useState<boolean>(true);
+
   const sm = useMediaQuery("(min-width:639px)");
   useEffect(() => {
     window.addEventListener("load", () => {
       setReady(true);
     });
-    const hash = window.location.hash;
-    const route = window.location.pathname + hash;
-    const validRoute = navlinks.findIndex((link) => link.link === route);
-    if (validRoute > -1) {
-      setRoute(navlinks[validRoute].name);
-    }
+    window.addEventListener("hashchange", (e) => {
+      const { pathname, hash } = window.location;
+      const route = pathname + hash;
+      console.log(hash, pathname);
+      setRoute(route);
+    });
+    const { hash, pathname } = window.location;
+    const dist =
+      hash.length > 0 && pathname === "/" ? pathname + hash : "/#home";
+    setRoute(dist);
   }, []);
+
+  useEffect(() => {
+    if (initial) return setinitial(false);
+    router.push(route);
+  }, [route]);
+
   const checkValid = (state: boolean, sm: boolean) => {
     if (sm) return true;
     return state;
@@ -106,7 +122,7 @@ const Nav: FC = () => {
         {navlinks.map(({ name, link }, i) => (
           <li
             onClick={() => {
-              setRoute(name);
+              setRoute(link);
               if (!sm) {
                 setNavOpen(false);
               }
@@ -127,7 +143,7 @@ const Nav: FC = () => {
             <span
               style={{ height: "0.125rem" }}
               className={`${
-                Route === name
+                route === link
                   ? "w-full bg-DarkCyan"
                   : hoveredLink === name
                   ? "w-full opacity-100 bg-white"

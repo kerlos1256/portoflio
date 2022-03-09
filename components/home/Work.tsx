@@ -23,7 +23,7 @@ const Work: FC<{ projects: ProjectType[] }> = ({ projects }) => {
       >
         {/* work cards */}
         {projects.map((card, i) => (
-          <ProjectCard key={card._id} card={card} />
+          <ProjectCard key={card._id} card={card} border={true} />
         ))}
       </div>
     </section>

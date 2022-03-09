@@ -2,14 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { FC, useState } from "react";
 import { ProjectType } from "../home/Work";
-const ProjectCard: FC<{ card: ProjectType }> = ({ card }) => {
+const ProjectCard: FC<{ card: ProjectType; border?: boolean }> = ({
+  card,
+  border = false,
+}) => {
   const [hovered, setHovered] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
   return (
     <div
       onMouseOver={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative w-full max-w-[386px] h-[214px]"
+      className={`relative w-full max-w-[386px] h-[214px] ${
+        border ? "border-[0.0625rem]" : ""
+      } shadow-lg`}
     >
       <img className="w-full h-full object-cover" src={card.image} />
       <div
@@ -18,7 +23,7 @@ const ProjectCard: FC<{ card: ProjectType }> = ({ card }) => {
         } transition-opacity duration-500 absolute top-0 left-0 w-full h-full`}
       >
         <div className="w-full h-full absolute top-0 left-0 bg-CardOverlay opacity-70"></div>
-        <Link href={card.url}>
+        <Link href={`/project/${card._id}`}>
           <div
             onMouseOver={() => setLinkHovered(true)}
             onMouseLeave={() => setLinkHovered(false)}

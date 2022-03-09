@@ -16,6 +16,7 @@ export default connectDB(async (req: NextApiRequest, res: NextApiResponse) => {
         await projectModel.updateOne({ _id }, rest);
 
         res.status(200).end();
+        res.unstable_revalidate("/");
       } catch (error) {
         res.status(500).send(error);
       }
