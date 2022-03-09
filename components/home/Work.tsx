@@ -1,8 +1,6 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import ProjectCard from "../partails/ProjectCard";
-const Work: FC<{ projects: CardType[] }> = ({ projects }) => {
-  const [cardHovered, setCardHovered] = useState<number>();
-
+const Work: FC<{ projects: ProjectType[] }> = ({ projects }) => {
   return (
     <section className=" flex flex-col gap-40" id="work">
       <div className="flex flex-col items-center">
@@ -25,14 +23,7 @@ const Work: FC<{ projects: CardType[] }> = ({ projects }) => {
       >
         {/* work cards */}
         {projects.map((card, i) => (
-          <div
-            key={i}
-            onMouseOver={() => setCardHovered(i)}
-            onMouseLeave={() => setCardHovered(undefined)}
-            className="inline-block"
-          >
-            <ProjectCard card={card} hovered={cardHovered === i} />
-          </div>
+          <ProjectCard key={card._id} card={card} />
         ))}
       </div>
     </section>
@@ -41,9 +32,10 @@ const Work: FC<{ projects: CardType[] }> = ({ projects }) => {
 
 export default Work;
 
-export interface CardType {
-  id: number;
+export interface ProjectType {
+  _id: string;
   image: string;
   name: string;
   url: string;
+  visiable: boolean;
 }

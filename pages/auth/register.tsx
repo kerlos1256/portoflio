@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Input from "../../components/partails/Input";
 
-export default () => {
+const Register = () => {
   const [{ username, password, invitationCode }, setInput] = useState<{
     username: string;
     password: string;
@@ -91,3 +91,5 @@ export default () => {
     </div>
   );
 };
+
+export default Register;

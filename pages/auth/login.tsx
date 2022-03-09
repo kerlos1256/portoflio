@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Input from "../../components/partails/Input";
 
-export default () => {
+const Login = () => {
   const router = useRouter();
   const { callbackUrl } = router.query;
   const [error, setError] = useState<string>();
@@ -75,3 +75,5 @@ export default () => {
     </div>
   );
 };
+
+export default Login;

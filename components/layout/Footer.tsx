@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 const Footer: FC = () => {
-  return <div className="h-60 bg-lightGrey">Footer</div>;
+  return <div className="text-center py-4">Copyright 2022 - kerlos</div>;
 };
 
 export default Footer;

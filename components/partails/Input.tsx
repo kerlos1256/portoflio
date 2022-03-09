@@ -86,11 +86,11 @@ const Input: FC<props> = ({
           className="outline-none bg-transparent w-full p-2"
           {...props}
         />
-        <div className="w-full h-[0.125rem] bg-white"></div>
+        <div className="w-full h-[0.0625rem] bg-white"></div>
         <div
           className={`${
             focus ? "w-full" : "w-0"
-          } h-[0.125rem] absolute bottom-0 left-1/2 -translate-x-1/2 bg-DarkCyan origin-center duration-500 transition-all`}
+          } h-[0.0625rem] absolute bottom-0 left-1/2 -translate-x-1/2 bg-DarkCyan origin-center duration-500 transition-all`}
         ></div>
       </div>
     );

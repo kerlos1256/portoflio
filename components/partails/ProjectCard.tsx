@@ -1,14 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { FC, useState } from "react";
-import { CardType } from "../home/Work";
-const ProjectCard: FC<{ card: CardType; hovered: boolean }> = ({
-  card,
-  hovered,
-}) => {
+import { ProjectType } from "../home/Work";
+const ProjectCard: FC<{ card: ProjectType }> = ({ card }) => {
+  const [hovered, setHovered] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
   return (
-    <div className="relative w-full max-w-[386px] h-[214px] px-4">
+    <div
+      onMouseOver={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative w-full max-w-[386px] h-[214px]"
+    >
       <img className="w-full h-full object-cover" src={card.image} />
       <div
         className={`${

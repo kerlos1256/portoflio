@@ -2,12 +2,15 @@ import { TextField } from "@mui/material";
 import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
 import Contact from "../components/home/Contact";
 import Hero from "../components/home/Hero";
 import Skills from "../components/home/Skills";
-import Work, { CardType } from "../components/home/Work";
+import Work, { ProjectType } from "../components/home/Work";
+import { ProjectsState } from "../state/recoil/projects";
 
-const Home: NextPage<{ projects: CardType[] }> = ({ projects }) => {
+const Home: NextPage<{ projects: ProjectType[] }> = ({ projects }) => {
   return (
     <main className="flex flex-col gap-24 mb-24 pt-20">
       <Head>

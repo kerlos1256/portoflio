@@ -12,8 +12,8 @@ const navlinks: NavLink[] = [
     link: "/#home",
   },
   {
-    name: "Skills",
-    link: "/#skills",
+    name: "Stack",
+    link: "/#stack",
   },
   {
     name: "Work",
@@ -145,7 +145,11 @@ const Nav: FC = () => {
           ready ? "-translate-y-0 opacity-1" : "-translate-y-full opacity-0"
         } transform transition-all duration-500`}
       >
-        <a href="https://github.com/kerlos1256" target="_blank">
+        <a
+          href="https://github.com/kerlos1256"
+          target="_blank"
+          rel="noreferrer"
+        >
           {/* github */}
           <svg
             width="41"
